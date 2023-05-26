@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import FollowersPage from "./pages/FollowersPage.js";
+import NewPostPage from "./pages/NewPostPage.js";
+import SignInPage from "./pages/SignInPage.js";
+import SignUpPage from "./pages/SignUpPage.js";
+import UserProfilePage from "./pages/UserProfilePage.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PagesContainer>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/" element={<UserProfilePage />} />
+          <Route path="/users/:id" element={<UserProfilePage />} />
+          <Route path="/post" element={<NewPostPage />} />
+          <Route path="/followers/:id" element={<FollowersPage />} />
+          <Route path="/follows/:id" element={<FollowersPage />} />
+        </Routes>
+      </BrowserRouter>
+    </PagesContainer>
   );
 }
 
 export default App;
+
+const PagesContainer = styled.main`
+  margin: 0 auto;
+  padding: 0 10%;
+  max-width: 1020px;
+`;
