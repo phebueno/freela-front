@@ -1,24 +1,12 @@
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Post from "../components/Post.js";
+import { useGetUserData } from "../services/user.js";
 
 export default function UserProfilePage() {
   const { id } = useParams();
-  const [userData, setUserData] = useState(undefined);
-  useEffect(() => {
-    const url = `${process.env.REACT_APP_API_URL}/users/${id}`;
-    axios
-      .get(url)
-      .then((res) => {
-        setUserData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err.message));
-    console.log("teste");
-  }, [id]);
+  const userData = useGetUserData();
+  
   if (id)
     return (
       <ContentContainer>

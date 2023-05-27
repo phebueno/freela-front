@@ -30,6 +30,7 @@ export default function SignUpPage() {
         value={form.name}
         onChange={handleForm}
         placeholder="Nome"
+        required
       />
       <input
         type="email"
@@ -37,6 +38,7 @@ export default function SignUpPage() {
         value={form.email}
         onChange={handleForm}
         placeholder="E-mail"
+        required
       />
       <input
         type="text"
@@ -44,6 +46,7 @@ export default function SignUpPage() {
         value={form.imgProfile}
         onChange={handleForm}
         placeholder="Foto de perfil"
+        required
       />
       <textarea
         name="bio"
@@ -52,6 +55,7 @@ export default function SignUpPage() {
         placeholder="Biografia"
         maxLength={200}
         minLength={3} 
+        required
       />
       <input
         type="password"
@@ -59,6 +63,7 @@ export default function SignUpPage() {
         value={form.password}
         onChange={handleForm}
         placeholder="Senha"
+        required
       />
       <input
         type="password"
@@ -66,6 +71,7 @@ export default function SignUpPage() {
         value={form.confirmPassword}
         onChange={handleForm}
         placeholder="Confirmar senha"
+        required
       />
 
       <button>Criar conta</button>

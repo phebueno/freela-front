@@ -23,8 +23,8 @@ function App() {
             <Route path="/" element={<UserProfilePage />} />
             <Route path="/users/:id" element={<UserProfilePage />} />
             <Route path="/post" element={<NewPostPage />} />
-            <Route path="/followers/:id" element={<FollowersPage />} />
-            <Route path="/follows/:id" element={<FollowersPage />} />
+            <Route path="/users/:id/followers/" element={<FollowersPage />} />
+            <Route path="/users/:id/follows/" element={<FollowersPage />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

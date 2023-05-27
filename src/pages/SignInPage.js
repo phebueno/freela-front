@@ -22,6 +22,7 @@ export default function SignInPage() {
         value={form.email}
         onChange={handleForm}
         placeholder="E-mail"
+        required
       />
       <input
         type="password"
@@ -29,6 +30,7 @@ export default function SignInPage() {
         value={form.password}
         onChange={handleForm}
         placeholder="Senha"
+        required
       />
 
       <button>Entrar</button>
