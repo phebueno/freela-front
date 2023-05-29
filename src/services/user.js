@@ -14,7 +14,6 @@ export function useGetUserData() {
     if(!idAccount) navigate("/signin");
     else id = idAccount;
   } 
-  //SE PATHNAME FOR /, INSERIR ID ACCOUNT COMO ID PARA VISITA DA PÁGINA
   const [userData, setUserData] = useState(undefined);
 
   useEffect(() => {
