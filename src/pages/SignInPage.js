@@ -15,7 +15,7 @@ export default function SignInPage() {
     signIn(form);
   }
 
-  //useKickIn();
+  useKickIn();
 
   return (
     <Form onSubmit={submitForm}>

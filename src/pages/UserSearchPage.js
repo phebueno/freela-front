@@ -1,19 +1,33 @@
+import { useState } from "react";
 import styled from "styled-components";
 import ProfileBox from "../components/ProfileBox.js";
 import { useGetAllUsers } from "../services/user.js";
 
 export default function UserSearchPage() {
   const profiles = useGetAllUsers();
-    console.log(profiles);
+  const [query, setQuery] = useState("");
   if (profiles)
     return (
-      <ContentContainer >
-
+      <ContentContainer>
+        <input
+          placeholder="Pesquisar usuário"
+          onChange={(event) => setQuery(event.target.value)}
+        />
         <ProfilesContainer>
           {profiles.length === 0 && "Não há nenhum usuário aqui!"}
-          {profiles.map((profile, index) => (
-            <ProfileBox key={index} profile={profile} />
-          ))}
+          {profiles
+            .filter((post) => {
+              if (query === "") {
+                return post;
+              } else if (
+                post.username.toLowerCase().includes(query.toLowerCase())
+              ) {
+                return post;
+              }
+            })
+            .map((profile, index) => (
+              <ProfileBox key={index} profile={profile} />
+            ))}
         </ProfilesContainer>
       </ContentContainer>
     );
