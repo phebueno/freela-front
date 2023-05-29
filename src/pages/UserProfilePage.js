@@ -12,7 +12,7 @@ export default function UserProfilePage() {
   const likePost = useLikePost();
   return (
     <ContentContainer>
-      {!userData && <Aviso>Este perfil não existe!</Aviso>}
+      {userData && <Aviso>Este perfil não existe!</Aviso>}
       {userData && (
         <>
           <UserHeader>
