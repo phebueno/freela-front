@@ -1,14 +1,11 @@
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Post from "../components/Post.js";
 import { useGetUserData } from "../services/user.js";
 
 export default function UserProfilePage() {
-  const { id } = useParams();
   const userData = useGetUserData();
   
-  if (id)
-    return (
+  return (
       <ContentContainer>
         {!userData && "Esse perfil não existe!"}
         {userData && (
@@ -31,8 +28,7 @@ export default function UserProfilePage() {
           </>
         )}
       </ContentContainer>
-    );
-  else return <div>Perfil do usuário logado</div>;
+    )
 }
 
 const Aviso = styled.div`

@@ -1,9 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext.js";
+import useKickOut from "../hooks/useKickOut.js";
 
 export function useGetUserData() {
-  const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { idAccount } = useContext(AuthContext);
+  let { id } = useParams();
+  useKickOut();
+  if(location.pathname==="/"){
+    if(!idAccount) navigate("/signin");
+    else id = idAccount;
+  } 
+  //SE PATHNAME FOR /, INSERIR ID ACCOUNT COMO ID PARA VISITA DA PÁGINA
   const [userData, setUserData] = useState(undefined);
 
   useEffect(() => {

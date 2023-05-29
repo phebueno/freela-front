@@ -21,7 +21,7 @@ export function useSignUp() {
   }
 
   export function useSignIn() {
-    const { setUsername, setToken } = useContext(AuthContext);
+    const { setUsername, setToken, setIdAccount } = useContext(AuthContext);
     const navigate = useNavigate();
     return (body) => {
       const url = `${process.env.REACT_APP_API_URL}/signin`;
@@ -31,8 +31,10 @@ export function useSignUp() {
           //Cria sessão com armazenamento local
           localStorage.setItem("user", res.data.username);
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("id", res.data.id);
           setUsername(res.data.username);
           setToken(res.data.token);
+          setIdAccount(res.data.id);
           navigate("/");
         })
         .catch((err) => {
@@ -42,4 +44,5 @@ export function useSignUp() {
         });
     };
   }
+  
   

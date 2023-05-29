@@ -12,9 +12,10 @@ import UserProfilePage from "./pages/UserProfilePage.js";
 function App() {
   const [username, setUsername] = useState(localStorage.getItem("user"));
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [idAccount, setIdAccount] = useState(localStorage.getItem("id"));
   return (
     <PagesContainer>
-      <AuthContext.Provider value={{username, setUsername,token, setToken}}>
+      <AuthContext.Provider value={{username, setUsername,token, setToken, idAccount, setIdAccount}}>
         <BrowserRouter>
           <Menu />
           <Routes>
