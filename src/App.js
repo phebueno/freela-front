@@ -11,16 +11,24 @@ import SignUpPage from "./pages/SignUpPage.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import UserSearchPage from "./pages/UserSearchPage.js";
 
-
 function App() {
   const [username, setUsername] = useState(localStorage.getItem("user"));
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [idAccount, setIdAccount] = useState(localStorage.getItem("id"));
   return (
-    <PagesContainer>
-      <AuthContext.Provider value={{username, setUsername,token, setToken, idAccount, setIdAccount}}>
-        <BrowserRouter>
-          <Menu />
+    <AuthContext.Provider
+      value={{
+        username,
+        setUsername,
+        token,
+        setToken,
+        idAccount,
+        setIdAccount,
+      }}
+    >
+      <BrowserRouter>
+        <Menu />
+        <PagesContainer>
           <Routes>
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/signup" element={<SignUpPage />} />
@@ -32,9 +40,9 @@ function App() {
             <Route path="/users/search/" element={<UserSearchPage />} />
           </Routes>
           <NewPostButton />
-        </BrowserRouter>
-      </AuthContext.Provider>
-    </PagesContainer>
+        </PagesContainer>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 
@@ -43,5 +51,5 @@ export default App;
 const PagesContainer = styled.main`
   margin: 0 auto;
   padding: 0 10%;
-  max-width: 1020px;
+  max-width: 800px;
 `;

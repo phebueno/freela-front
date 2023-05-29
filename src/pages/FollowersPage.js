@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProfileBox from "../components/ProfileBox.js";
+import { secondaryDarkerColor } from "../constants/colors.js";
 import { useProfiles } from "../services/profiles.js";
 
 export default function FollowersPage() {
@@ -8,7 +9,7 @@ export default function FollowersPage() {
   if (profiles && profiles.followers)
     return (
       <ContentContainer >
-        <UserTitle>Seguidores de {profiles.username}</UserTitle>
+        <UserTitle>{`SEGUIDORES DE ${profiles.username.toUpperCase()}` }</UserTitle>
         <ProfilesContainer>
           {profiles.followers.length === 0 && "Não há nenhum usuário aqui!"}
           {profiles.followers.map((profile, index) => (
@@ -21,7 +22,7 @@ export default function FollowersPage() {
   if (profiles && profiles.follows)
     return (
       <ContentContainer>
-        <UserTitle>Quem {profiles.username} segue</UserTitle>
+        <UserTitle>{`QUEM ${profiles.username.toUpperCase()} SEGUE` }</UserTitle>
         {profiles.follows.length === 0 && "Não há nenhum usuário aqui!"}
         {profiles.follows.map((profile, index) => (
           <ProfileBox key={index} profile={profile} />
@@ -30,7 +31,12 @@ export default function FollowersPage() {
     );
 }
 
-const UserTitle = styled.div``;
+const UserTitle = styled.div`
+margin: 30px 0;
+color:${secondaryDarkerColor};
+font-weight:600;
+font-size: 25px;
+`;
 
 const ProfilesContainer = styled.section`
   display: flex;

@@ -10,7 +10,7 @@ export default function UserSearchPage() {
     return (
       <ContentContainer>
         <input
-          placeholder="Pesquisar usuário"
+          placeholder="Digite aqui o nome do seu usuário..."
           onChange={(event) => setQuery(event.target.value)}
         />
         <ProfilesContainer>
@@ -38,6 +38,7 @@ const ProfilesContainer = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  gap: 10px;
 `;
 
 const ContentContainer = styled.section`
@@ -45,4 +46,8 @@ const ContentContainer = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  input{
+    margin: 10px 0;
+    width: 400px;
+  }
 `;

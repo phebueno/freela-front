@@ -49,6 +49,7 @@ export function useLikePost(){
           alert("Faça login para continuar usando o nosso serviço!");
           navigate("/signin")
         }
+        else alert(err.response.data);
       });
   };
 }
