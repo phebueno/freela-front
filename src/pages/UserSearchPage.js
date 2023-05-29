@@ -10,7 +10,7 @@ export default function UserSearchPage() {
     return (
       <ContentContainer>
         <input
-          placeholder="Digite aqui o nome do seu usuário..."
+          placeholder="Digite o nome do usuário a ser buscado..."
           onChange={(event) => setQuery(event.target.value)}
         />
         <ProfilesContainer>

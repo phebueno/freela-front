@@ -12,7 +12,7 @@ export default function UserProfilePage() {
   const likePost = useLikePost();
   return (
     <ContentContainer>
-      {!userData && "Esse perfil não existe!"}
+      {!userData && <Aviso>Este perfil não existe!</Aviso>}
       {userData && (
         <>
           <UserHeader>
@@ -28,7 +28,7 @@ export default function UserProfilePage() {
             </UserInfoContainer>
           </UserHeader>
           <PostsContainer>
-            {userData.posts.length === 0 && <Aviso>"Não há nada aqui!"</Aviso>}
+            {userData.posts.length === 0 && <Aviso>Ainda não há nada aqui!</Aviso>}
             {userData.posts &&
               userData.posts.map((post, index) => (
                 <Post
@@ -51,7 +51,14 @@ const SlUserFollowStyle = styled(SlUserFollow)`
   font-size: 30px;
 `;
 
-const Aviso = styled.div``;
+const Aviso = styled.div`
+width:100%;
+text-align: center;
+margin-top: 80px;
+color:${mainColor};
+font-size:20px;
+font-weight:600;
+`;
 
 const PostsContainer = styled.div`
   display: flex;
