@@ -4,7 +4,7 @@ import AuthContext from "../contexts/AuthContext.js";
 
 export default function useLogout() {
   const navigate = useNavigate();
-  const { setToken, setUsername } = useContext(AuthContext);
+  const { setToken, setUsername, setIdAccount } = useContext(AuthContext);
 
   return () => {
     const logoutConfirmation = window.confirm(
@@ -13,6 +13,7 @@ export default function useLogout() {
     if (logoutConfirmation) {
       setUsername(undefined);
       setToken(undefined);
+      setIdAccount(undefined);
       localStorage.clear();
       navigate("/signin");
     }

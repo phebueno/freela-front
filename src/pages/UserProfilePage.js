@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Post from "../components/Post.js";
+import { useFollowUser } from "../services/follow.js";
+import { useLikePost } from "../services/post.js";
 import { useGetUserData } from "../services/user.js";
 
 export default function UserProfilePage() {
-  const userData = useGetUserData();
-  
+  const {userData, getUserData} = useGetUserData();
+  const followUser = useFollowUser();
+  const likePost = useLikePost();
   return (
       <ContentContainer>
         {!userData && "Esse perfil não existe!"}
@@ -15,14 +18,14 @@ export default function UserProfilePage() {
               <UserInfoContainer>
                 <div>{userData.username}</div>
                 <div>{userData.bio}</div>
-                <button>Seguir</button>
+                <button onClick={()=>followUser(userData.id,getUserData)}>Seguir</button>
               </UserInfoContainer>
             </UserHeader>
             <PostsContainer>
               {userData.posts.length===0 && <Aviso>"Não há nada aqui!"</Aviso>}
               {userData.posts &&
                 userData.posts.map((post, index) => (
-                  <Post key={index} post={post} />
+                  <Post key={index} post={post} likePost={likePost} getUserData={getUserData}/>
                 ))}
             </PostsContainer>
           </>

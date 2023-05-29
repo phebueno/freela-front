@@ -25,3 +25,31 @@ export function useNewPost() {
       });
   };
 }
+
+export function useLikePost(){
+  const { token } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return (postId, getUserData) => {
+    console.log(postId);
+    const url = `${process.env.REACT_APP_API_URL}/posts/${postId}/like`;
+    axios
+      .post(url,{}, config)
+      .then((res) => {
+        console.log(res.data);
+        getUserData();
+      })
+      .catch((err) => {
+        console.log(err.response);
+        if(err.response.data==="Unauthorized"){
+          alert("Faça login para continuar usando o nosso serviço!");
+          navigate("/signin")
+        }
+      });
+  };
+}
+

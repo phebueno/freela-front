@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useForm from "../hooks/useForm.js";
+import useKickIn from "../hooks/useKickIn.js";
 import { useSignIn } from "../services/auth.js";
 
 export default function SignInPage() {
@@ -13,6 +14,8 @@ export default function SignInPage() {
     e.preventDefault();
     signIn(form);
   }
+
+  //useKickIn();
 
   return (
     <Form onSubmit={submitForm}>

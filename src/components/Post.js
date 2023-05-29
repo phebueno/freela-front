@@ -1,12 +1,12 @@
 import dayjs from "dayjs";
 import styled from "styled-components";
-export default function Post({ post }) {
+export default function Post({ post, likePost, getUserData }) {
   return (
     <PostBox>
       <img src={post.imgPost} alt="" />
       <PostInfo>
         <div>
-          <button>Curtir</button>({post.likesCount} curtidas)
+          <button onClick={()=>likePost(post.id, getUserData)}>Curtir</button>({post.likesCount} curtidas)
         </div>
         <div>{dayjs(post.createdAt).format("DD/MM/YYYY [às] H[h]mm")}</div>
       </PostInfo>

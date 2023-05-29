@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useForm from "../hooks/useForm.js";
+import useKickOut from "../hooks/useKickOut.js";
 import { useNewPost } from "../services/post.js";
 
 export default function NewPostPage(){
@@ -8,6 +9,7 @@ export default function NewPostPage(){
         bodyPost: "",
       });
     
+      useKickOut();
       const newPost = useNewPost();
 
       function submitForm(e) {
